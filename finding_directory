@@ -1,0 +1,20 @@
+Sub Find_file_directory()
+'Find files of the data source
+Dim filediag As FileDialogSet
+filediag = Application.FileDialog(msoFileDialogFilePicker)
+Dim filename As Variant
+Dim pos As Integer
+Application.ScreenUpdating = False
+Sheets("Input").Range("B17:B20").ClearContents
+pos = 18
+With filediag
+  If .Show = -1 Then
+    For Each filename In .SelectedItems
+      Sheets("Input").Range("B" & pos).Value = filename
+      pos = pos + 1
+    Next
+  Else
+  End If
+ End With
+Set filediag = Nothing
+End Sub
