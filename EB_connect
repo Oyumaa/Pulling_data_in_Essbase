@@ -1,0 +1,23 @@
+Sub EB_Connect(Server As String, AppName As String, DbName As String, Optional UserName As String, Optional Password As String)
+    
+    sts = EssVConnect(Empty, UserName, Password, Server, AppName, DbName)
+    Const EssBottomLevel = 3
+  
+    If sts <> 0 Then
+        MsgBox "COULD NOT CONNECT TO SERVER", vbExclamation, "Error"
+        End
+    Else
+    
+        hCtx = EssVGetHctxFromSheet(Empty)
+    
+        If hCtx = 0 Then
+            MsgBox "Error While Connecting To Server - Getting hCtx Handle!", vbExclamation, "ERROR!"
+            End
+        End If
+    End If
+            x = EssVSetSheetOption("[" & ActiveWorkbook.Name & "]" & ActiveSheet.Name, 5, 1)
+            x = EssVSetSheetOption("[" & ActiveWorkbook.Name & "]" & ActiveSheet.Name, 11, True)
+            x = EssVSetSheetOption("[" & ActiveWorkbook.Name & "]" & ActiveSheet.Name, 18, False)
+            x = EssVSetSheetOption("[" & ActiveWorkbook.Name & "]" & ActiveSheet.Name, 21, True)
+            x = EssVSetSheetOption("[" & ActiveWorkbook.Name & "]" & ActiveSheet.Name, 22, True)
+End Sub
