@@ -1,0 +1,17 @@
+Sub Refresh_Data()
+Application.ScreenUpdating = False
+ClearConstants
+EB_Connect "Server", "Apps", "DB"
+For Each Sheet In Sheets
+  If Sheet.Name <> "Input" And Sheet.Name <> "Options" Then
+    Sheet.Select
+    Range("D5:AF70").Select
+    EssMenuVRetrieve
+   End If
+ Next
+ For Each Sheet In Sheets
+  EssVDisconnect "[" & ActiveWorkbook.Name & "]" & Sheet.Name
+ Next
+ Changing_version
+ Application.ScreenUpdating = True
+ End Sub
