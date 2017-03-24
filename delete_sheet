@@ -1,0 +1,8 @@
+Sub Delete_Sheet()
+Application.DisplayAlerts = False
+  For Each Sheet In SheetsIf Sheet.name <> "Input" And Sheet.name <> "Report" And Sheet.name <> "Option" Then
+    Sheet.Delete
+  End If
+  Next
+Application.DisplayAlerts = True
+End Sub
